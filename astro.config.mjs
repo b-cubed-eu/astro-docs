@@ -19,8 +19,8 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Tutorials',
-          autogenerate: { directory: 'tutorials' },
+          label: 'R',
+          autogenerate: { directory: 'r' },
         },
       ],
     }),
