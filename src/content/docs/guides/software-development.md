@@ -63,7 +63,7 @@ If your code is already on GitHub under a personal account, it MUST be transferr
 
 Once you have created a repository (see Figure 1), you SHOULD complete a number of additional steps.
 
-![Screenshot of a newly created repository](/assets/images/dev-guide/code-repository.png)
+![Screenshot of a newly created repository](/astro-docs/software-development_files/code-repository.png)
 **Figure 1: Screenshot of a newly created repository.**
 
 ### Set the copyright holder
@@ -542,7 +542,7 @@ Further reading:
 - Berkeley offers an introduction to functions in its [Introduction to the R Language](https://www.stat.berkeley.edu/~statcur/Workshop2/Presentations/functions.pdf) presentation.
 - Software Carpentry has an excellent [course page on R functions](http://swcarpentry.github.io/swc-releases/2017.08/r-novice-inflammation/02-func-R/).
 
-### How to split a script into functions {r-function-split}
+### How to split a script into functions {#r-function-split}
 
 The process of taking an existing script and converting it into a collection of functions that make the workflow more flexible, easier to maintain and more efficient, is an example of [code refactoring](https://en.wikipedia.org/wiki/Code_refactoring).
 
@@ -608,7 +608,7 @@ fct_rev <- function(f) {
 
 An additional advantage of this system is that every function will automatically get its own page on your [documentation website](#r-pkg-website). A screenshot of the webpage that was created for the function above is shown in Figure 2.
 
-![Screenshot of online function documentation](/assets/images/dev-guide/r-function.png)
+![Screenshot of online function documentation](/astro-docs/software-development_files/r-function.png)
 **Figure 2: Screenshot of the online documentation of the forcats function `fct_rev()`.**
 
 If you are new to documenting functions, have a look at [the chapter on function documentation](https://r-pkgs.org/man.html) in the R Packages book. There is also [the getting started](https://devguide.ropensci.org/pkg_building.html#roxygen-2-use) page of roxygen2, and finally the rOpenSci Packages guide offers some advice in [the section about documentation](https://devguide.ropensci.org/pkg_building.html#roxygen2-use).
