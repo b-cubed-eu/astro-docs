@@ -5,21 +5,21 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
   integrations: [
     starlight({
-      title: 'My Docs',
+      title: 'B-Cubed guides & tutorials',
       social: {
-        github: 'https://github.com/withastro/starlight',
+        github: 'https://github.com/b-cubed-eu/documentation',
       },
       sidebar: [
         {
           label: 'Guides',
           items: [
-            // Each item here is one entry in the navigation menu.
-            { label: 'Example Guide', slug: 'guides/example' },
+            { label: 'Example guide', slug: 'guides/example' },
+            { label: 'Software development guide', slug: 'guides/dev-guide' }
           ],
         },
         {
-          label: 'Reference',
-          autogenerate: { directory: 'reference' },
+          label: 'Tutorials',
+          autogenerate: { directory: 'tutorials' },
         },
       ],
     }),
