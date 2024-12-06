@@ -6,7 +6,9 @@ source: https://github.com/b-cubed-eu/gcube/blob/7581a58ef5f29d3f1e3f2f6e0b13dec
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# gcube <a href="https://b-cubed-eu.github.io/gcube/"><img src="figures/logo.png" align="right" height="139" alt="gcube website" /></a>
+
+
+# gcube <a href="https://b-cubed-eu.github.io/gcube/"><img src="man/figures/logo.png" align="right" height="139" alt="gcube website" /></a>
 
 <!-- badges: start -->
 
@@ -54,7 +56,6 @@ The user can change these arguments to allow for more flexibility.
 ``` r
 # Load packages
 library(gcube)
-#> Error in library(gcube): there is no package called 'gcube'
 
 library(sf)      # working with spatial objects
 library(dplyr)   # data wrangling
@@ -75,7 +76,7 @@ ggplot() +
 ```
 
 <div class="figure">
-<img src="./figures/readme-polygon-1.png" alt="Spatial extend in which we will simulate species occurrences." width="80%" />
+<img src="man/figures/readme-polygon-1.png" alt="Spatial extend in which we will simulate species occurrences." width="80%" />
 <p class="caption">plot of chunk polygon</p>
 </div>
 
@@ -94,15 +95,19 @@ occurrences_df <- simulate_occurrences(
   spatial_pattern = c("random", "clustered"),
   n_time_points = 1,
   seed = 123)
-#> Error in simulate_occurrences(species_range = polygon, initial_average_occurrences = 50, : could not find function "simulate_occurrences"
+#> [using unconditional Gaussian simulation]
 
 # Visualise
 ggplot() + 
   geom_sf(data = polygon) +
   geom_sf(data = occurrences_df) +
   theme_minimal()
-#> Error in fortify(data): object 'occurrences_df' not found
 ```
+
+<div class="figure">
+<img src="man/figures/readme-simulate-occurrences-1.png" alt="Spatial distribution of occurrences within the polygon." width="80%" />
+<p class="caption">plot of chunk simulate-occurrences</p>
+</div>
 
 ### Detection process
 
@@ -118,7 +123,6 @@ detections_df_raw <- sample_observations(
   detection_probability = 0.5,
   sampling_bias = c("no_bias", "polygon", "manual"),
   seed = 123)
-#> Error in sample_observations(occurrences = occurrences_df, detection_probability = 0.5, : could not find function "sample_observations"
 
 # Visualise
 ggplot() + 
@@ -126,8 +130,12 @@ ggplot() +
   geom_sf(data = detections_df_raw,
           aes(colour = sampling_status)) +
   theme_minimal()
-#> Error in fortify(data): object 'detections_df_raw' not found
 ```
+
+<div class="figure">
+<img src="man/figures/readme-detect-occurrences-1.png" alt="Spatial distribution of occurrences with indication of sampling status." width="80%" />
+<p class="caption">plot of chunk detect-occurrences</p>
+</div>
 
 We select the detected occurrences and add an uncertainty to these observations.
 This can be done using the `filter_observations()` and `add_coordinate_uncertainty()` functions, respectively.
@@ -137,22 +145,18 @@ This can be done using the `filter_observations()` and `add_coordinate_uncertain
 # Select detected occurrences only
 detections_df <- filter_observations(
   observations_total = detections_df_raw)
-#> Error in filter_observations(observations_total = detections_df_raw): could not find function "filter_observations"
 
 # Add coordinate uncertainty
 set.seed(123)
 coord_uncertainty_vec <- rgamma(nrow(detections_df), shape = 2, rate = 6)
-#> Error in nrow(detections_df): object 'detections_df' not found
 observations_df <- add_coordinate_uncertainty(
   observations = detections_df,
   coords_uncertainty_meters = coord_uncertainty_vec)
-#> Error in add_coordinate_uncertainty(observations = detections_df, coords_uncertainty_meters = coord_uncertainty_vec): could not find function "add_coordinate_uncertainty"
 
 # Created and sf object with uncertainty circles to visualise
 buffered_observations <- st_buffer(
   observations_df,
   observations_df$coordinateUncertaintyInMeters)
-#> Error in st_buffer(observations_df, observations_df$coordinateUncertaintyInMeters): object 'observations_df' not found
 
 # Visualise
 ggplot() + 
@@ -161,8 +165,12 @@ ggplot() +
           fill = alpha("firebrick", 0.3)) +
   geom_sf(data = observations_df, colour = "firebrick") +
   theme_minimal()
-#> Error in fortify(data): object 'buffered_observations' not found
 ```
+
+<div class="figure">
+<img src="man/figures/readme-uncertainty-occurrences-1.png" alt="Spatial distribution of detected occurrences with coordinate uncertainty." width="80%" />
+<p class="caption">plot of chunk uncertainty-occurrences</p>
+</div>
 
 ### Grid designation process
 
@@ -182,7 +190,6 @@ grid_df <- st_make_grid(
                                              sparse = FALSE))) %>%
   dplyr::filter(intersect == TRUE) %>%
   dplyr::select(-"intersect")
-#> Error in st_crs(x): object 'buffered_observations' not found
 ```
 
 To create an occurrence cube, `grid_designation()` will randomly take a point within the uncertainty circle around the observations.
@@ -195,7 +202,6 @@ occurrence_cube_df <- grid_designation(
   observations = observations_df,
   grid = grid_df,
   seed = 123)
-#> Error in grid_designation(observations = observations_df, grid = grid_df, : could not find function "grid_designation"
 
 # Get sampled points within uncertainty circle
 sampled_points <- grid_designation(
@@ -203,7 +209,6 @@ sampled_points <- grid_designation(
   grid = grid_df,
   aggregate = FALSE,
   seed = 123)
-#> Error in grid_designation(observations = observations_df, grid = grid_df, : could not find function "grid_designation"
 
 # Visualise grid designation
 ggplot() +
@@ -215,8 +220,12 @@ ggplot() +
   geom_sf(data = observations_df, colour = "firebrick") +
   labs(x = "", y = "", fill = "n") +
   theme_minimal()
-#> Error in fortify(data): object 'occurrence_cube_df' not found
 ```
+
+<div class="figure">
+<img src="man/figures/readme-grid-designation-1.png" alt="Distribution of random samples within uncertainty circle." width="80%" />
+<p class="caption">plot of chunk grid-designation</p>
+</div>
 
 The output gives the number of observations per grid cell and minimal coordinate uncertainty per grid cell.
 
@@ -230,8 +239,12 @@ ggplot() +
   scale_fill_continuous(type = "viridis") +
   labs(x = "", y = "") +
   theme_minimal()
-#> Error in fortify(data): object 'occurrence_cube_df' not found
 ```
+
+<div class="figure">
+<img src="man/figures/readme-visualise-designation-1.png" alt="Distribution of minimal coordinate uncertainty." width="80%" />
+<p class="caption">plot of chunk visualise-designation</p>
+</div>
 
 ### Cubes for multiple species
 
