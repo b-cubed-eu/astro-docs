@@ -9,8 +9,11 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'B-Cubed documentation',
+      logo: {
+        src: './src/assets/b3-logo.svg',
+      },
       social: {
-        github: 'https://github.com/b-cubed-eu/documentation',
+        github: 'https://github.com/b-cubed-eu/astro-docs/',
       },
       editLink: {
         baseUrl: 'https://github.com/b-cubed-eu/documentation/edit/main/',
