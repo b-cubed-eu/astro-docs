@@ -4,6 +4,8 @@ import { remarkHeadingId } from "remark-custom-heading-id"
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://b-cubed-eu.github.io',
+  base: 'astro-docs',
   integrations: [
     starlight({
       title: 'B-Cubed guides & tutorials',
