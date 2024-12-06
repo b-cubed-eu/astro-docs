@@ -13,10 +13,7 @@ export default defineConfig({
       sidebar: [
         {
           label: 'Guides',
-          items: [
-            { label: 'Example guide', slug: 'guides/example' },
-            { label: 'Software development guide', slug: 'guides/dev-guide' }
-          ],
+          autogenerate: { directory: 'guides' },
         },
         {
           label: 'R',
