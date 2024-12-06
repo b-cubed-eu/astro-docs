@@ -8,7 +8,7 @@ export default defineConfig({
   base: 'astro-docs',
   integrations: [
     starlight({
-      title: 'B-Cubed guides & tutorials',
+      title: 'B-Cubed documentation',
       social: {
         github: 'https://github.com/b-cubed-eu/documentation',
       },
