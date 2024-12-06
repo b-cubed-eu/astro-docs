@@ -27,7 +27,7 @@ library(ggplot2)   # data visualisation
 library(tidyterra) # visualisation spatraster objects
 ```
 
-# Input
+## Input
 
 The functions are set up such that a single polygon as input is enough
 to go through this workflow using default arguments. The user can change
@@ -52,7 +52,7 @@ ggplot() +
 
 <img src="/astro-docs/occurrence-process_files/figure-gfm/unnamed-chunk-3-1.png" alt="Spatial extend in which we will simulate species occurrences."  />
 
-# Simulate occurrences
+## Simulate occurrences
 
 We generate occurrence points within the polygon using the
 `simulate_occurrences()` function. Default arguments ensure that an sf
@@ -65,7 +65,7 @@ object with POLYGON geometry is sufficient to simulate occurrences.
 The options for user defined arguments are demonstrated in the next
 subsections.
 
-## Changing number of occurrences over time
+### Changing number of occurrences over time
 
 Say we want to have 100 occurrences in our plot over 10 years. You can
 change the trend in the average number of occurrences over time. We
@@ -201,7 +201,7 @@ tibble(
 
 <img src="/astro-docs/occurrence-process_files/figure-gfm/unnamed-chunk-12-1.png" alt="Simulated number of occurrences over time using a custom linear function."  />
 
-## Changing the degree of spatial clustering
+### Changing the degree of spatial clustering
 
 We can also choose the amount of spatial clustering. We visualise this
 with the supporting functions used in `simulate_occurrences()`.
@@ -334,7 +334,7 @@ ggplot() +
 
 <img src="/astro-docs/occurrence-process_files/figure-gfm/named-1.png" alt="500 sampled occurrences from highly clustered spatial pattern."  />
 
-# Example
+## Example
 
 Now that we know how the supporting functions work, we can generate
 occurrence points within the polygon using the `simulate_occurrences()`
