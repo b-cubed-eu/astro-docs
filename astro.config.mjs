@@ -27,6 +27,10 @@ export default defineConfig({
           autogenerate: { directory: 'guides' },
         },
         {
+          label: 'Specifications',
+          autogenerate: { directory: 'specs' },
+        },
+        {
           label: 'R tutorials',
           autogenerate: { directory: 'r' },
           collapsed: true,
