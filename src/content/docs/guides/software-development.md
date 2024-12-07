@@ -16,7 +16,7 @@ These requirements were carefully selected from numerous existing best practices
 
 The sections include requirements, as well as hands-on instructions and examples. They cover topics such as [code repositories](#repo) and [collaboration](#collaboration), and in-depth development best practices, including testing and documentation, for both the [R](#r) and [Python](#python) programming languages. The final section offers guidelines for the creation of [tutorials](#tutorial) for the produced software. At the head of every section an overview is offered that summarizes the minimal requirements (MUST as per RFC 2119). The text of the section can include additional recommendations (SHOULD, RECOMMENDED as per RFC 2119).
 
-:::caution
+:::note
 This guide was first created as B-Cubed project deliverable D3.1 [Quality requirements for software](https://b-cubed.eu/storage/app/uploads/public/65e/1b2/2a0/65e1b22a0b85c121473896.pdf). While it was written for B-Cubed software, the suggestions and recommendations are general enough to be used by anyone who wants to improve their research software code.
 :::
 

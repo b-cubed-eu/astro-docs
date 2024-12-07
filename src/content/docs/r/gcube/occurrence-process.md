@@ -7,6 +7,10 @@ sidebar:
   order: 1
 ---
 
+:::note[Original document]
+The [original version of this document](https://github.com/b-cubed-eu/gcube/blob/main/vignettes/articles/occurrence-process.Rmd) is copied here with permission.
+:::
+
 The workflow for simulating a biodiversity data cube used in gcube can
 be divided in three steps or processes:
 
