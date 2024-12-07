@@ -14,7 +14,7 @@ Suggestion citation:
 
 These requirements were carefully selected from numerous existing best practices and guidelines, and aim to promote a consistent **open source development** cycle that allows collaboration and reuse within and outside of the consortium. Emphasis is placed on standardized metadata (files) that make it easier for both humans and search engines to find the software, and thus to increase its discoverability and reuse. In this same vein, emphasis is placed on the **portability** of the produced software to make sure it is functional on different platforms now and in the future with minimal modifications. Following existing paradigms and design patterns makes the behaviour of the software more predictable and makes results easier to replicate. By following the recommendations in this document, interoperability between software packages can be achieved.
 
-The chapters include requirements, as well as hands-on instructions and examples. They cover topics such as [code repositories](#repo) and [collaboration](#collaboration), and in-depth development best practices, including testing and documentation, for both the [R](#r) and [Python](#python) programming languages. The final chapter offers guidelines for the creation of [tutorials](#tutorial) for the produced software. At the head of every chapter an overview is offered that summarizes the minimal requirements (MUST as per RFC 2119). The text of the chapter can include additional recommendations (SHOULD, RECOMMENDED as per RFC 2119).
+The sections include requirements, as well as hands-on instructions and examples. They cover topics such as [code repositories](#repo) and [collaboration](#collaboration), and in-depth development best practices, including testing and documentation, for both the [R](#r) and [Python](#python) programming languages. The final section offers guidelines for the creation of [tutorials](#tutorial) for the produced software. At the head of every section an overview is offered that summarizes the minimal requirements (MUST as per RFC 2119). The text of the section can include additional recommendations (SHOULD, RECOMMENDED as per RFC 2119).
 
 :::caution
 This guide was first created as B-Cubed project deliverable D3.1 [Quality requirements for software](https://b-cubed.eu/storage/app/uploads/public/65e/1b2/2a0/65e1b22a0b85c121473896.pdf). While it was written for B-Cubed software, the suggestions and recommendations are general enough to be used by anyone who wants to improve their research software code.
@@ -63,8 +63,9 @@ If you already have your code (locally), follow [About adding existing source co
 
 If your code is already on GitHub under a personal account, it MUST be transferred to the `b-cubed-eu` organization or your institution, if it has a well-established track record of maintaining code on GitHub. Contact the [GitHub B-Cubed admin](mailto:laura.abraham@plantentuinmeise.be) to gain the rights to transfer your repository to the `b-cubed-eu` organization.
 
-Once you have created a repository (see Figure 1), you SHOULD complete a number of additional steps.
+Once you have created a repository (see [Figure 1](#figure-1)), you SHOULD complete a number of additional steps.
 
+<span id="figure-1"></span>
 ![Screenshot of a newly created repository](/astro-docs/software-development_files/code-repository.png)
 **Figure 1: Screenshot of a newly created repository.**
 
@@ -129,11 +130,11 @@ Note: a `CITATION.cff` is different from the R-specific `CITATION` file ([withou
 
 ### Extend your README.md file {#repo-readme}
 
-See the [README file](#repo-readme) chapters.
+See the [README file](#repo-readme) sections.
 
 ### Setup your local environment, contribute code and collaborate {#repo-local}
 
-See the [Code collaboration](#collaboration) chapter.
+See the [Code collaboration](#collaboration) section.
 
 ## The README file {#readme}
 
@@ -334,7 +335,7 @@ Starting from release 1.0, authors MUST also publish their releases on Zenodo. Z
 
 ### Data products {#versioning-data-products}
 
-The purpose of this chapter is to outline the requirements for software and scripts that are developed within the B-Cubed project. Data products are out-of-scope. However, many of the principles mentioned in this document can be applied to data products as well. For more details, we refer to the upcoming deliverable "D3.3 Guidelines on the FAIR and open depositing of data products to ensure that B-Cubed data cubes are compatible with the EBV Data Portal and other outlets for data cube dissemination".
+The purpose of this section is to outline the requirements for software and scripts that are developed within the B-Cubed project. Data products are out-of-scope. However, many of the principles mentioned in this document can be applied to data products as well. For more details, we refer to the upcoming deliverable "D3.3 Guidelines on the FAIR and open depositing of data products to ensure that B-Cubed data cubes are compatible with the EBV Data Portal and other outlets for data cube dissemination".
 
 ### Changelog {#versioning-changelog}
 
@@ -538,7 +539,7 @@ A sure way to confuse users is for a function to return a different output with 
 
 Further reading:
 
-- An excellent overview of how functions actually work in R can be found in [the section on functions](https://r4ds.had.co.nz/functions.html) in R for Data Science, the rest of the chapter also includes an excellent overview of best practices.
+- An excellent overview of how functions actually work in R can be found in [the section on functions](https://r4ds.had.co.nz/functions.html) in R for Data Science, the rest of the section also includes an excellent overview of best practices.
 - Nicholas Tierney provides an easy to follow example of how functions can make your life easier and how to get started with writing them in [this blogpost](https://www.njtierney.com/post/2023/11/10/how-to-get-good-with-r/#write-functions).
 - Principles and strategies that come in handy when writing functions (and packages) are summarized in [the tidyverse design principles](http://design.tidyverse.org).
 - Berkeley offers an introduction to functions in its [Introduction to the R Language](https://www.stat.berkeley.edu/~statcur/Workshop2/Presentations/functions.pdf) presentation.
@@ -608,8 +609,9 @@ fct_rev <- function(f) {
 }
 ```
 
-An additional advantage of this system is that every function will automatically get its own page on your [documentation website](#r-pkg-website). A screenshot of the webpage that was created for the function above is shown in Figure 2.
+An additional advantage of this system is that every function will automatically get its own page on your [documentation website](#r-pkg-website). A screenshot of the webpage that was created for the function above is shown in [Figure 2](#figure-2).
 
+<span id="figure-2"></span>
 ![Screenshot of online function documentation](/astro-docs/software-development_files/r-function.png)
 **Figure 2: Screenshot of the online documentation of the forcats function `fct_rev()`.**
 
@@ -707,7 +709,7 @@ Apart from base R, the package [cli](https://cli.r-lib.org/) comes recommended f
 
 ### README {#r-pkg-readme}
 
-For general instructions, see [the README file](#repo-readme) chapter. The README file for R packages largely takes the same form as the one required for all repositories. Additionally, a number of useful tools are available to you as a developer to create a great README.
+For general instructions, see [the README file](#repo-readme) section. The README file for R packages largely takes the same form as the one required for all repositories. Additionally, a number of useful tools are available to you as a developer to create a great README.
 
 If you don’t have a README yet, you can create one with [usethis](https://usethis.r-lib.org/reference/use_readme_rmd.html):
 
@@ -814,7 +816,7 @@ rOpenSci offers a useful [blog post](https://ropensci.org/blog/2021/11/16/how-to
 
 ### LICENSE {#r-pkg-license}
 
-As described in the [Create a repository](#repo) chapter, all software produced in the context MUST be licenced under the [MIT licence](https://mit-license.org/). The copyright holder of the software will be the institution that will be maintaining the package, not the authors of the package.
+As described in the [Create a repository](#repo) section, all software produced in the context MUST be licenced under the [MIT licence](https://mit-license.org/). The copyright holder of the software will be the institution that will be maintaining the package, not the authors of the package.
 
 Adding this LICENSE file is easy with [usethis](https://usethis.r-lib.org/) (take care to immediately set the copyright holder, as it will default to the package authors):
 
@@ -863,7 +865,7 @@ my_function <- function(file) {
 }
 ```
 
-For dependency recommendations, see the [dependencies section](#r-dependencies) in the R chapter.
+For dependency recommendations, see the [dependencies section](#r-dependencies) in the R section.
 
 ## R analysis code {#r-analysis}
 
@@ -887,7 +889,7 @@ An important note is that most R analysis scripts could be wrapped as a package.
 
 Creating an R package might seem like a huge step if you haven’t done it before, and while there is a learning curve, it really isn’t nearly as hard as it seems. All of this to say, please don’t be afraid to start an R package instead of an analysis script as part of your analysis workflow.
 
-For more information on packages, refer to the [R packages](#r-pkg) chapter.
+For more information on packages, refer to the [R packages](#r-pkg) section.
 
 An R analysis script/project can be started from scratch via [usethis](https://usethis.r-lib.org/):
 
@@ -928,7 +930,7 @@ usethis::use_git()
 - Classes and functions MUST be documented using docstrings.
 :::
 
-Many of the principles that are outlined in the chapters on [R](#r) and [R packages](#r-pkg), also apply to writing Python code. In this chapter, we will outline some additional requirements for Python. A very good reference to Python programming can be found in [The Hitchhicker’s Guide to Python](https://docs.python-guide.org/).
+Many of the principles that are outlined in the sections on [R](#r) and [R packages](#r-pkg), also apply to writing Python code. In this section, we will outline some additional requirements for Python. A very good reference to Python programming can be found in [The Hitchhicker’s Guide to Python](https://docs.python-guide.org/).
 
 ### Repository structure {#python-repo-structure}
 
