@@ -1,12 +1,14 @@
 ---
 title: B-Cubed software development guide
-description: >
-  This guide specifies high-level requirements for software, computational tools and resources developed for B-Cubed (referred to in the chapters as "software") to ensure that the produced software meets the intended quality, openness, portability and reusability.
-citation: >
-  Huybrechts P, Trekels M, Abraham L, Desmet P (2024). B-Cubed software development guide. <https://docs.b-cubed.eu/dev-guide/>
 sidebar:
   label: Software development guide
 ---
+
+This guide specifies high-level requirements for software, computational tools and resources developed for B-Cubed (referred to in the sections as "software") to ensure that the produced software meets the intended quality, openness, portability and reusability.
+
+Suggestion citation:
+
+> Huybrechts P, Trekels M, Abraham L, Desmet P (2024). B-Cubed software development guide. <https://docs.b-cubed.eu/guides/software-development/>
 
 ## Introduction
 
