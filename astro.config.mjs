@@ -31,7 +31,7 @@ export default defineConfig({
           autogenerate: { directory: 'specs' },
         },
         {
-          label: 'R tutorials',
+          label: 'R packages',
           autogenerate: { directory: 'r' },
           collapsed: true,
         },
