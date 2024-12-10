@@ -16,6 +16,7 @@ rmd_to_md <- function(rmd_file, output_dir) {
 
   # Set output
   figures_dir <- file.path("public", output_dir)
+  figures_dir_url <- paste0("/astro-docs/", output_dir, "/")
   markdown_dir <- file.path("src", "content", "docs", output_dir)
   markdown_file <- file.path(markdown_dir, paste0(md_name, ".md"))
   
@@ -25,7 +26,7 @@ rmd_to_md <- function(rmd_file, output_dir) {
     # Directory for figures
     base.dir = figures_dir,
     # Path to figures in markdown
-    base.url = paste0("/astro-docs/", figures_dir, "/")
+    base.url = figures_dir_url
   )
   knitr::opts_chunk$set(
     # Subdirectory for figures, default figure/

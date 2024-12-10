@@ -1,5 +1,4 @@
 ---
-title: "Simulating the occurrence process"
 editor_options: 
   chunk_output_type: console
 lastUpdated: 2024-12-06
@@ -56,7 +55,7 @@ ggplot() +
   theme_minimal()
 ```
 
-<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-3-1.png" alt="Spatial extend in which we will simulate species occurrences."  />
+<img src="/astro-docs/r/gcube/occurrence-process -unnamed-chunk-3-1.png" alt="Spatial extend in which we will simulate species occurrences."  />
 
 ## Simulate occurrences
 
@@ -111,7 +110,7 @@ tibble(
     theme_minimal()
 ```
 
-<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-7-1.png" alt="Simulated number of occurrences over time with unspecified temporal function."  />
+<img src="/astro-docs/r/gcube/occurrence-process -unnamed-chunk-7-1.png" alt="Simulated number of occurrences over time with unspecified temporal function."  />
 
 **Option 2**
 
@@ -144,7 +143,7 @@ tibble(
     theme_minimal()
 ```
 
-<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-9-1.png" alt="Simulated number of occurrences over time using a random walk over time."  />
+<img src="/astro-docs/r/gcube/occurrence-process -unnamed-chunk-9-1.png" alt="Simulated number of occurrences over time using a random walk over time."  />
 
 **Option 3**
 
@@ -203,7 +202,7 @@ tibble(
     theme_minimal()
 ```
 
-<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-12-1.png" alt="Simulated number of occurrences over time using a custom linear function."  />
+<img src="/astro-docs/r/gcube/occurrence-process -unnamed-chunk-12-1.png" alt="Simulated number of occurrences over time using a custom linear function."  />
 
 ### Changing the degree of spatial clustering
 
@@ -240,7 +239,7 @@ ggplot() +
   theme_minimal()
 ```
 
-<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-15-1.png" alt="Random spatial pattern to sample occurrences."  />
+<img src="/astro-docs/r/gcube/occurrence-process -unnamed-chunk-15-1.png" alt="Random spatial pattern to sample occurrences."  />
 
 **Option 2**
 
@@ -266,7 +265,7 @@ ggplot() +
   theme_minimal()
 ```
 
-<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-17-1.png" alt="Clustered spatial pattern to sample occurrences."  />
+<img src="/astro-docs/r/gcube/occurrence-process -unnamed-chunk-17-1.png" alt="Clustered spatial pattern to sample occurrences."  />
 
 **Option 3**
 
@@ -294,7 +293,7 @@ ggplot() +
   theme_minimal()
 ```
 
-<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-19-1.png" alt="Clustered spatial pattern to sample occurrences."  />
+<img src="/astro-docs/r/gcube/occurrence-process -unnamed-chunk-19-1.png" alt="Clustered spatial pattern to sample occurrences."  />
 
 Let's look at a high value for clustering.
 
@@ -318,7 +317,7 @@ ggplot() +
   theme_minimal()
 ```
 
-<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-21-1.png" alt="Highly clustered spatial pattern to sample occurrences."  />
+<img src="/astro-docs/r/gcube/occurrence-process -unnamed-chunk-21-1.png" alt="Highly clustered spatial pattern to sample occurrences."  />
 
 The patterns generated above are then used for sampling using a different supporting function.
 
@@ -343,7 +342,7 @@ ggplot() +
   theme_minimal()
 ```
 
-<img src="/astro-docs/public/r/gcube/occurrence-process -named-1.png" alt="500 sampled occurrences from highly clustered spatial pattern."  />
+<img src="/astro-docs/r/gcube/occurrence-process -named-1.png" alt="500 sampled occurrences from highly clustered spatial pattern."  />
 
 ## Example
 
@@ -375,7 +374,7 @@ occurrences_df %>%
     theme_minimal()
 ```
 
-<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-24-1.png" alt="Number of occurrences over time."  />
+<img src="/astro-docs/r/gcube/occurrence-process -unnamed-chunk-24-1.png" alt="Number of occurrences over time."  />
 
 This is the spatial distribution of the occurrences for each time point.
 
@@ -389,4 +388,4 @@ ggplot() +
   theme_minimal()
 ```
 
-<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-25-1.png" alt="Spatial distribution of occurrences within the polygon for each time point."  />
+<img src="/astro-docs/r/gcube/occurrence-process -unnamed-chunk-25-1.png" alt="Spatial distribution of occurrences within the polygon for each time point."  />
