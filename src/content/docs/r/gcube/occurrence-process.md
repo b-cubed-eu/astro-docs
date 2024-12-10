@@ -11,15 +11,16 @@ sidebar:
 The [original version of this document](https://github.com/b-cubed-eu/gcube/blob/main/vignettes/articles/occurrence-process.Rmd) is copied here with permission.
 :::
 
-The workflow for simulating a biodiversity data cube used in gcube can
-be divided in three steps or processes:
 
-1.  Occurrence process
-2.  Detection process
-3.  Grid designation process
 
-This tutorial documents the first part of the gcube simulation workflow,
-viz. the occurrence process.
+The workflow for simulating a biodiversity data cube used in gcube can be divided in three steps or processes:
+
+1. Occurrence process
+2. Detection process
+3. Grid designation process
+
+This tutorial documents the first part of the gcube simulation workflow, viz. the occurrence process.
+
 
 ``` r
 # Load packages
@@ -33,13 +34,13 @@ library(tidyterra) # visualisation spatraster objects
 
 ## Input
 
-The functions are set up such that a single polygon as input is enough
-to go through this workflow using default arguments. The user can change
-these arguments to allow for more flexibility. In this tutorial we will
-demonstrate the different options.
+The functions are set up such that a single polygon as input is enough to go through this workflow using default arguments.
+The user can change these arguments to allow for more flexibility.
+In this tutorial we will demonstrate the different options.
 
 As input, we create a polygon in which we want to simulate occurrences.
 It represents the spatial extend of the species.
+
 
 ``` r
 polygon <- st_polygon(list(cbind(c(500, 1000, 1000, 600, 200, 100, 500),
@@ -48,34 +49,34 @@ polygon <- st_polygon(list(cbind(c(500, 1000, 1000, 600, 200, 100, 500),
 
 The polygon looks like this.
 
+
 ``` r
 ggplot() +
   geom_sf(data = polygon) +
   theme_minimal()
 ```
 
-<img src="/astro-docs/occurrence-process_files/figure-gfm/unnamed-chunk-3-1.png" alt="Spatial extend in which we will simulate species occurrences."  />
+<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-3-1.png" alt="Spatial extend in which we will simulate species occurrences."  />
 
 ## Simulate occurrences
 
-We generate occurrence points within the polygon using the
-`simulate_occurrences()` function. Default arguments ensure that an sf
-object with POLYGON geometry is sufficient to simulate occurrences.
+We generate occurrence points within the polygon using the `simulate_occurrences()` function.
+Default arguments ensure that an sf object with POLYGON geometry is sufficient to simulate occurrences.
+
 
 ``` r
 ?simulate_occurrences
 ```
 
-The options for user defined arguments are demonstrated in the next
-subsections.
+The options for user defined arguments are demonstrated in the next subsections.
 
 ### Changing number of occurrences over time
 
-Say we want to have 100 occurrences in our plot over 10 years. You can
-change the trend in the average number of occurrences over time. We
-visualise this with the supporting functions used in
-`simulate_occurrences()`. The number of occurrences are always drawn
-from a Poisson distribution.
+Say we want to have 100 occurrences in our plot over 10 years.
+You can change the trend in the average number of occurrences over time.
+We visualise this with the supporting functions used in `simulate_occurrences()`.
+The number of occurrences are always drawn from a Poisson distribution.
+
 
 ``` r
 ?simulate_timeseries
@@ -83,9 +84,8 @@ from a Poisson distribution.
 
 **Option 1**
 
-If we do not specify a temporal function, we draw from a Poisson
-distribution for each time point with average (lambda parameter)
-`initial_average_occurrences`.
+If we do not specify a temporal function, we draw from a Poisson distribution for each time point with average (lambda parameter) `initial_average_occurrences`.
+
 
 ``` r
 n_occurrences_indep <- simulate_timeseries(
@@ -95,10 +95,10 @@ n_occurrences_indep <- simulate_timeseries(
   seed = 123)
 ```
 
-We plot the simulated number of occurrences over time. We see that the
-average is close to 100 over time as expected. Using a different seed
-will result in different numbers but the average will be (close to) 100
-over time.
+We plot the simulated number of occurrences over time.
+We see that the average is close to 100 over time as expected.
+Using a different seed will result in different numbers but the average will be (close to) 100 over time.
+
 
 ``` r
 tibble(
@@ -111,17 +111,15 @@ tibble(
     theme_minimal()
 ```
 
-<img src="/astro-docs/occurrence-process_files/figure-gfm/unnamed-chunk-7-1.png" alt="Simulated number of occurrences over time with unspecified temporal function."  />
+<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-7-1.png" alt="Simulated number of occurrences over time with unspecified temporal function."  />
 
 **Option 2**
 
-We can specify a function ourselves, e.g. the internal function
-`simulate_random_walk()` to have a random walk over time. A random walk
-is a mathematical concept where each step is determined randomly. The
-`sd_step` parameter refers to the standard deviation of these random
-steps (drawn from a Normal distribution). A higher value leading to
-larger steps and potentially greater variability in the path of the
-random walk.
+We can specify a function ourselves, e.g. the internal function `simulate_random_walk()` to have a random walk over time.
+A random walk is a mathematical concept where each step is determined randomly.
+The `sd_step` parameter refers to the standard deviation of these random steps (drawn from a Normal distribution).
+A higher value leading to larger steps and potentially greater variability in the path of the random walk.
+
 
 ``` r
 n_occurrences_walk <- simulate_timeseries(
@@ -132,9 +130,9 @@ n_occurrences_walk <- simulate_timeseries(
   seed = 123)
 ```
 
-We plot the simulated number of occurrences over time which follow a
-random walk. Using a different seed will result in a different random
-pattern.
+We plot the simulated number of occurrences over time which follow a random walk.
+Using a different seed will result in a different random pattern.
+
 
 ``` r
 tibble(
@@ -146,13 +144,13 @@ tibble(
     theme_minimal()
 ```
 
-<img src="/astro-docs/occurrence-process_files/figure-gfm/unnamed-chunk-9-1.png" alt="Simulated number of occurrences over time using a random walk over time."  />
+<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-9-1.png" alt="Simulated number of occurrences over time using a random walk over time."  />
 
 **Option 3**
 
-We can specify a function ourselves that determines the average trend in
-number of occurrences over time. Here we provide an example for a linear
-trend.
+We can specify a function ourselves that determines the average trend in number of occurrences over time.
+Here we provide an example for a linear trend.
+
 
 ``` r
 my_own_linear_function <- function(
@@ -179,6 +177,7 @@ my_own_linear_function <- function(
 
 We try out a linear trend with slope equal to 1.
 
+
 ``` r
 n_occurrences_linear <- simulate_timeseries(
   initial_average_occurrences = 100,
@@ -188,9 +187,10 @@ n_occurrences_linear <- simulate_timeseries(
   seed = 123)
 ```
 
-We plot the simulated number of occurrences over time. We see that the
-average slope is indeed close to 1. Using a different seed will result
-in different numbers but the average slope will be (close to) 1.
+We plot the simulated number of occurrences over time.
+We see that the average slope is indeed close to 1.
+Using a different seed will result in different numbers but the average slope will be (close to) 1.
+
 
 ``` r
 tibble(
@@ -203,12 +203,13 @@ tibble(
     theme_minimal()
 ```
 
-<img src="/astro-docs/occurrence-process_files/figure-gfm/unnamed-chunk-12-1.png" alt="Simulated number of occurrences over time using a custom linear function."  />
+<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-12-1.png" alt="Simulated number of occurrences over time using a custom linear function."  />
 
 ### Changing the degree of spatial clustering
 
-We can also choose the amount of spatial clustering. We visualise this
-with the supporting functions used in `simulate_occurrences()`.
+We can also choose the amount of spatial clustering.
+We visualise this with the supporting functions used in `simulate_occurrences()`.
+
 
 ``` r
 ?create_spatial_pattern
@@ -216,8 +217,9 @@ with the supporting functions used in `simulate_occurrences()`.
 
 **Option 1**
 
-There are defaults for random and clustered patterns. Let’s look at the
-default where we have no clustering.
+There are defaults for random and clustered patterns.
+Let's look at the default where we have no clustering.
+
 
 ``` r
 rs_pattern_random <- create_spatial_pattern(
@@ -230,6 +232,7 @@ rs_pattern_random <- create_spatial_pattern(
 
 We see values of high sampling probability randomly distributed.
 
+
 ``` r
 ggplot() +
   geom_spatraster(data = rs_pattern_random) +
@@ -237,12 +240,12 @@ ggplot() +
   theme_minimal()
 ```
 
-<img src="/astro-docs/occurrence-process_files/figure-gfm/unnamed-chunk-15-1.png" alt="Random spatial pattern to sample occurrences."  />
+<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-15-1.png" alt="Random spatial pattern to sample occurrences."  />
 
 **Option 2**
 
-Let’s look at the default where we have clustering (same as
-`spatial_pattern = 10`, see further).
+Let's look at the default where we have clustering (same as `spatial_pattern = 10`, see further).
+
 
 ``` r
 rs_pattern_clustered <- create_spatial_pattern(
@@ -255,6 +258,7 @@ rs_pattern_clustered <- create_spatial_pattern(
 
 We see values of high sampling probability clustered together.
 
+
 ``` r
 ggplot() +
   geom_spatraster(data = rs_pattern_clustered) +
@@ -262,13 +266,14 @@ ggplot() +
   theme_minimal()
 ```
 
-<img src="/astro-docs/occurrence-process_files/figure-gfm/unnamed-chunk-17-1.png" alt="Clustered spatial pattern to sample occurrences."  />
+<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-17-1.png" alt="Clustered spatial pattern to sample occurrences."  />
 
 **Option 3**
 
-We can also change the clustering ourselves. A larger number for
-`spatial_pattern` means a broader size of the clusters area. Let’s look
-at a low value for clustering.
+We can also change the clustering ourselves.
+A larger number for `spatial_pattern` means a broader size of the clusters area.
+Let's look at a low value for clustering.
+
 
 ``` r
 rs_pattern_clustered2 <- create_spatial_pattern(
@@ -279,8 +284,8 @@ rs_pattern_clustered2 <- create_spatial_pattern(
 #> [using unconditional Gaussian simulation]
 ```
 
-We see values of high sampling probability in multiple, smaller
-clusters.
+We see values of high sampling probability in multiple, smaller clusters.
+
 
 ``` r
 ggplot() +
@@ -289,9 +294,10 @@ ggplot() +
   theme_minimal()
 ```
 
-<img src="/astro-docs/occurrence-process_files/figure-gfm/unnamed-chunk-19-1.png" alt="Clustered spatial pattern to sample occurrences."  />
+<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-19-1.png" alt="Clustered spatial pattern to sample occurrences."  />
 
-Let’s look at a high value for clustering.
+Let's look at a high value for clustering.
+
 
 ``` r
 rs_pattern_clustered3 <- create_spatial_pattern(
@@ -304,6 +310,7 @@ rs_pattern_clustered3 <- create_spatial_pattern(
 
 We see values of high sampling probability in fewer, larger clusters.
 
+
 ``` r
 ggplot() +
   geom_spatraster(data = rs_pattern_clustered3) +
@@ -311,17 +318,17 @@ ggplot() +
   theme_minimal()
 ```
 
-<img src="/astro-docs/occurrence-process_files/figure-gfm/unnamed-chunk-21-1.png" alt="Highly clustered spatial pattern to sample occurrences."  />
+<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-21-1.png" alt="Highly clustered spatial pattern to sample occurrences."  />
 
-The patterns generated above are then used for sampling using a
-different supporting function.
+The patterns generated above are then used for sampling using a different supporting function.
+
 
 ``` r
 ?sample_occurrences_from_raster
 ```
 
-If we for example sample 500 occurrences from the last raster, we see
-the sampling is according to the expected pattern.
+If we for example sample 500 occurrences from the last raster, we see the sampling is according to the expected pattern.
+
 
 ``` r
 pts_occ_clustered3 <- sample_occurrences_from_raster(
@@ -336,15 +343,13 @@ ggplot() +
   theme_minimal()
 ```
 
-<img src="/astro-docs/occurrence-process_files/figure-gfm/named-1.png" alt="500 sampled occurrences from highly clustered spatial pattern."  />
+<img src="/astro-docs/public/r/gcube/occurrence-process -named-1.png" alt="500 sampled occurrences from highly clustered spatial pattern."  />
 
 ## Example
 
-Now that we know how the supporting functions work, we can generate
-occurrence points within the polygon using the `simulate_occurrences()`
-function. We can for example sample randomly within the polygon over 6
-time points were we use a random walk over time with an initial average
-number of occurrences equal to 100.
+Now that we know how the supporting functions work, we can generate occurrence points within the polygon using the `simulate_occurrences()` function.
+We can for example sample randomly within the polygon over 6 time points were we use a random walk over time with an initial average number of occurrences equal to 100.
+
 
 ``` r
 occurrences_df <- simulate_occurrences(
@@ -360,6 +365,7 @@ occurrences_df <- simulate_occurrences(
 
 This is the number of occurrences we have for each time point.
 
+
 ``` r
 occurrences_df %>%
   st_drop_geometry() %>%
@@ -369,9 +375,10 @@ occurrences_df %>%
     theme_minimal()
 ```
 
-<img src="/astro-docs/occurrence-process_files/figure-gfm/unnamed-chunk-24-1.png" alt="Number of occurrences over time."  />
+<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-24-1.png" alt="Number of occurrences over time."  />
 
 This is the spatial distribution of the occurrences for each time point.
+
 
 ``` r
 ggplot() +
@@ -382,4 +389,4 @@ ggplot() +
   theme_minimal()
 ```
 
-<img src="/astro-docs/occurrence-process_files/figure-gfm/unnamed-chunk-25-1.png" alt="Spatial distribution of occurrences within the polygon for each time point."  />
+<img src="/astro-docs/public/r/gcube/occurrence-process -unnamed-chunk-25-1.png" alt="Spatial distribution of occurrences within the polygon for each time point."  />
