@@ -1,4 +1,5 @@
 ---
+title: "Simulating the occurrence process"
 editor_options: 
   chunk_output_type: console
 lastUpdated: 2024-12-06
